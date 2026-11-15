@@ -1,6 +1,6 @@
 # ☕ Starbucks Revenue Forecasting
 
-**🔗 Live dashboard:** [PASTE YOUR STREAMLIT LINK HERE]
+**🔗 Live dashboard:** https://sbux-revenue-forecast.streamlit.app/
 
 An end-to-end data analytics project that downloads Starbucks's official quarterly revenue from SEC filings, compares four forecasting methods using an honest backtest, and presents the results in an interactive dashboard.
 
