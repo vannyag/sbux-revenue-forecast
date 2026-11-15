@@ -16,15 +16,6 @@ This project answers three questions:
 2. Which forecasting method has been the most accurate historically?
 3. How much uncertainty surrounds the forecast?
 
-## Key findings
-
-*(Fill in after running your project. Keep each point to one sentence with a real number.)*
-
-- The most accurate model in the backtest was **[MODEL NAME]** with a MAPE of **[X]%**.
-- It [beat / did not beat] the simple seasonal baseline (**[Y]%** MAPE).
-- The ensemble forecasts revenue of **$[X]B** in **[QUARTER]**, with an 80% interval of **$[LOW]B to $[HIGH]B**.
-- Revenue is seasonal: **[QUARTER]** is typically the strongest quarter and **[QUARTER]** the weakest.
-
 ## Data
 
 | Item | Detail |
@@ -74,28 +65,6 @@ A random train/test split would let the model "peek" at the future, which is cal
 
 `sql_analysis.py` loads the history into SQLite and uses window functions (`LAG`) to calculate year-over-year and quarter-over-quarter growth, plus a `GROUP BY` to measure seasonality.
 
-### AI-generated summary (optional)
-
-`ai_summary.py` sends the forecast and backtest tables to an LLM through the Anthropic API and asks for a short executive summary for non-technical readers. It is told not to invent numbers.
-
-## Results
-
-### Backtest accuracy (last 12 quarters, lower is better)
-
-[PASTE THE TABLE FROM outputs/metrics.csv HERE]
-
-| model | MAPE_% | MAE_bn | RMSE_bn |
-|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] |
-
-**Interpretation:** [Write 2 to 4 honest sentences. Which model won? Did it beat the baseline? Why do you think so? If the baseline won or the margin is small, say so. That is a legitimate finding.]
-
-### Forecast for the next 4 quarters ($ billions)
-
-[PASTE THE TABLE FROM outputs/forecast.csv HERE]
-
-![Forecast chart](outputs/forecast.png)
-
 ## Dashboard
 
 The Streamlit dashboard has five tabs:
@@ -119,28 +88,6 @@ Being clear about limits is part of good analysis.
 - **Approximate quarters:** period labels are approximate calendar quarters, not Starbucks's fiscal quarter names.
 - **Prediction interval:** the interval comes from SARIMA only and assumes the model is correctly specified.
 - **Not financial advice:** this is a learning project and should not be used for investment decisions.
-
-## Project structure
-
-```
-sbux-revenue-forecast/
-├── .streamlit/
-│   └── config.toml        # forces the light colour theme
-├── outputs/
-│   ├── history.csv        # cleaned quarterly revenue
-│   ├── backtest.csv       # predicted vs actual
-│   ├── metrics.csv        # model accuracy
-│   ├── forecast.csv       # next 4 quarters
-│   ├── forecast.png       # forecast chart
-│   └── dashboard.png      # dashboard screenshot
-├── forecast.py            # data pipeline, models, backtest, forecast
-├── sql_analysis.py        # SQL growth and seasonality queries
-├── app.py                 # Streamlit dashboard
-├── ai_summary.py          # optional LLM executive summary
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
 
 ## How to run it
 
